@@ -20,16 +20,18 @@ public class PrimePane extends JPanel {
 
         int centerX = size.width / 2;
         int centerY = size.height / 2;
+        double sum = 0;
 
-        for (int i = 0; i < 104743; i++) {
-            double realR = r * i;
-            double realArc = arc * i;
+        for (int i = 1; i < 104743; i++) {
+            sum += 1/(double) i;
+            double realR = r * sum;
+            double realArc = arc * sum;
 
             double pointY = Math.sin(realArc) * realR + centerY;
             double pointX = Math.cos(realArc) * realR + centerX;
 
             g.setColor(isPrime(i) ? Color.RED : Color.GREEN);
-            g.fillOval((int) pointX, (int) pointY, 3, 3);
+            g.fillOval((int) pointX, (int) pointY, 2, 2);
         }
     }
 
